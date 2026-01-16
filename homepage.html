@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well Up - Your Stress-Free Week Companion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d9f4f;
+            --light-green: #4caf50;
+            --lighter-green: #e8f5e9;
+            --white: #ffffff;
+            --dark-text: #1a1a1a;
+            --light-gray: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--lighter-green) 0%, var(--white) 100%);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(45, 159, 79, 0.2);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            color: var(--white);
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background-color: var(--white);
+            color: var(--primary-green);
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--primary-green);
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .tip-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-green);
+            box-shadow: 0 5px 20px rgba(45, 159, 79, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(45, 159, 79, 0.2);
+        }
+
+        .tip-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .tip-card h3 {
+            color: var(--primary-green);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .tip-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Why Well Up Section */
+        .why-section {
+            background-color: var(--lighter-green);
+            padding: 80px 20px;
+        }
+
+        .why-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .why-text h2 {
+            color: var(--primary-green);
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .why-text p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 1.3em;
+        }
+
+        .why-image {
+            text-align: center;
+        }
+
+        .why-image img {
+            max-width: 100%;
+            border-radius: 15px;
+        }
+
+        .illustration {
+            font-size: 5em;
+            line-height: 1;
+        }
+
+        /* Quick Tips Section */
+        .quick-tips {
+            padding: 80px 20px;
+        }
+
+        .quick-tips-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 50px;
+            border: 3px solid var(--lighter-green);
+        }
+
+        .quick-tips h2 {
+            color: var(--primary-green);
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .quick-tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .quick-tip {
+            background: linear-gradient(135deg, var(--lighter-green) 0%, var(--white) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .quick-tip:hover {
+            background: linear-gradient(135deg, var(--light-green) 0%, var(--lighter-green) 100%);
+            transform: scale(1.05);
+        }
+
+        .quick-tip-number {
+            background-color: var(--primary-green);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3em;
+            margin: 0 auto 15px;
+        }
+
+        .quick-tip h4 {
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .quick-tip p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .why-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .quick-tips-container {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">🌿 Well Up</div>
+            <div class="nav-links">
+                <a href="#tips">Tips & Tricks</a>
+                <a href="#chat" class="cta-button">Start Chat</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Well Up 🌿</h1>
+            <p>Your Personal Stress-Relief Companion for Polytechnic Life</p>
+            <p>Chat with our AI wellness buddy to get personalized tips, manage your calendar, and maintain your mental health during busy weeks.</p>
+            <a href="index.html" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Why Well Up Section -->
+    <section class="why-section">
+        <div class="container">
+            <div class="why-content">
+                <div class="why-text">
+                    <h2>Why Well Up?</h2>
+                    <p>As a polytechnic student, you're juggling coursework, CCAs, internships, and personal life. Stress is inevitable, but it doesn't have to control you.</p>
+                    <p>Well Up is designed specifically for students like you—offering personalized stress relief strategies, event management, and constant support.</p>
+                    <ul class="feature-list">
+                        <li>24/7 AI wellness chatbot support</li>
+                        <li>Personalized stress-relief tips</li>
+                        <li>Smart calendar integration</li>
+                        <li>Quick relaxation techniques</li>
+                        <li>Plan your calm moments</li>
+                    </ul>
+                </div>
+                <div class="why-image">
+                    <div class="illustration">🧘‍♀️</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Tips Section -->
+    <section class="tips-section" id="tips">
+        <div class="container">
+            <h2 class="section-title">Stress Relief Tips for Polytechnic Students</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">📚</div>
+                    <h3>Break Down Your Workload</h3>
+                    <p>Instead of looking at all your assignments at once, break them into smaller, manageable tasks. Study for 25 minutes (Pomodoro Technique), then take a 5-minute break. This prevents overwhelm and boosts productivity.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🏃‍♂️</div>
+                    <h3>Move Your Body</h3>
+                    <p>Physical activity is one of the best stress relievers. Even a 15-minute walk around campus, a quick gym session, or a yoga class can significantly reduce anxiety and improve your mood. Find an activity you enjoy!</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">😴</div>
+                    <h3>Prioritize Quality Sleep</h3>
+                    <p>Never sacrifice sleep for studying. A well-rested mind performs better and handles stress more effectively. Aim for 7-8 hours and maintain a consistent sleep schedule, even on weekends.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🧘</div>
+                    <h3>Practice Meditation & Breathing</h3>
+                    <p>Spend just 5-10 minutes daily on meditation or deep breathing exercises. Apps like Calm or Headspace can guide you. This calms your nervous system and helps you stay centered during hectic days.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">👥</div>
+                    <h3>Connect with Friends</h3>
+                    <p>Don't isolate yourself. Spend time with classmates, join a CCA, or have study buddies. Social support is crucial for managing stress. Even a 30-minute chat over lunch can recharge you.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🎵</div>
+                    <h3>Use Music & Creative Outlets</h3>
+                    <p>Listen to calming music while studying, or engage in creative hobbies like drawing, writing, or playing an instrument. Creative activities help process emotions and provide a mental escape.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🍎</div>
+                    <h3>Eat Mindfully</h3>
+                    <p>Don't skip meals or rely on junk food. Eat balanced meals with fruits, vegetables, and proteins. Proper nutrition directly impacts your energy and mental clarity. Stay hydrated too!</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">📱</div>
+                    <h3>Set Digital Boundaries</h3>
+                    <p>Your phone isn't your life. Set time limits on social media, disable notifications during study hours, and take digital detox breaks. This reduces constant stress from information overload.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">💬</div>
+                    <h3>Talk to Someone</h3>
+                    <p>If stress feels overwhelming, reach out to a counselor, teacher, or trusted friend. Most polytechnics offer free counseling services. It's okay to ask for help—it's a sign of strength, not weakness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Tips Section -->
+    <section class="quick-tips">
+        <div class="container">
+            <div class="quick-tips-container">
+                <h2>5-Minute Stress Busters You Can Do Right Now</h2>
+                
+                <div class="quick-tips-grid">
+                    <div class="quick-tip">
+                        <div class="quick-tip-number">1</div>
+                        <h4>Box Breathing</h4>
+                        <p>Breathe in for 4 counts, hold for 4, exhale for 4, hold for 4. Repeat 5 times. Instant calm!</p>
+                    </div>
+
+                    <div class="quick-tip">
+                        <div class="quick-tip-number">2</div>
+                        <h4>Stretch It Out</h4>
+                        <p>Stand up and stretch your arms, neck, and back. A 2-minute full-body stretch releases tension immediately.</p>
+                    </div>
+
+                    <div class="quick-tip">
+                        <div class="quick-tip-number">3</div>
+                        <h4>Drink Water</h4>
+                        <p>Dehydration worsens stress. Drink a full glass of water slowly. Your body will thank you.</p>
+                    </div>
+
+                    <div class="quick-tip">
+                        <div class="quick-tip-number">4</div>
+                        <h4>Step Outside</h4>
+                        <p>Just 3 minutes of fresh air and sunlight can reset your mood and reduce stress hormones.</p>
+                    </div>
+
+                    <div class="quick-tip">
+                        <div class="quick-tip-number">5</div>
+                        <h4>Journal Your Thoughts</h4>
+                        <p>Write down what's stressing you for 3 minutes. Getting it out of your head onto paper helps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="chat">
+        <div class="container">
+            <h2>Ready to Take Control of Your Stress?</h2>
+            <p>Chat with Well Up now and get personalized stress-relief tips, schedule your calm moments, and build a healthier you.</p>
+            <a href="index.html" class="cta-button">Start Your Journey</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Well Up. Your mental health matters. Created for polytechnic students, by students.</p>
+            <p>Remember: It's okay to not be okay. Reach out for help when you need it. 🌿</p>
+        </div>
+    </footer>
+</body>
+</html>

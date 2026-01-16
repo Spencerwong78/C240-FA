@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well Up - Stress Management Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .home-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: var(--primary-green, #2d9f4f);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(45, 159, 79, 0.3);
+        }
+
+        .home-link:hover {
+            background-color: var(--light-green, #4caf50);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 159, 79, 0.4);
+        }
+
+        .home-link:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <a href="homepage.html" class="home-link">← Back to Home</a>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>🌿 Well Up</h1>
+                <p>Your Stress-Free Week Companion</p>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="chat-section">
+                <div class="chat-header">
+                    <h2>Chat with Your Wellness Buddy</h2>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <p>Hi there! 👋 I'm here to help you stay stress-free during your busy week. Feel free to ask me for tips, advice, or just chat about what's on your mind!</p>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input 
+                        type="text" 
+                        id="chatInput" 
+                        placeholder="Ask me for stress-relief tips..." 
+                        autocomplete="off"
+                    >
+                    <button id="sendButton" class="send-btn">Send</button>
+                </div>
+                <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+            </div>
+
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <h2>📅 Your Events</h2>
+                </div>
+                <div class="calendar-controls">
+                    <button id="prevMonth" class="month-btn">← Previous</button>
+                    <h3 id="monthYear"></h3>
+                    <button id="nextMonth" class="month-btn">Next →</button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+                <div class="events-list">
+                    <h3>Upcoming Events</h3>
+                    <div id="eventsList" class="events-container">
+                        <p class="no-events">No events yet. Create one by chatting with your buddy!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
